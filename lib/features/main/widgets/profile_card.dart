@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/core/constants/colors.dart';
 import 'package:admin_dashboard/core/constants/sizes.dart';
+import 'package:admin_dashboard/widgets/responsive.dart';
 import 'package:flutter/material.dart';
 
 class ProfileCardWidget extends StatelessWidget {
@@ -22,12 +23,13 @@ class ProfileCardWidget extends StatelessWidget {
             "assets/images/profile_pic.png",
             height: 38.0,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: defaultPadding / 2,
+          if (!Responsive.isMobile(context))
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: defaultPadding / 2,
+              ),
+              child: Text("Angelina Joli"),
             ),
-            child: Text("Angelina Joli"),
-          ),
           Icon(Icons.keyboard_arrow_down)
         ],
       ),

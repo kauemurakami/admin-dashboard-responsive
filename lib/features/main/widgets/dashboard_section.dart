@@ -3,6 +3,7 @@ import 'package:admin_dashboard/features/main/widgets/dash_header.dart';
 import 'package:admin_dashboard/features/main/widgets/my_fiels.dart';
 import 'package:admin_dashboard/features/main/widgets/recent_files_section.dart';
 import 'package:admin_dashboard/features/main/widgets/storage_section.dart';
+import 'package:admin_dashboard/widgets/responsive.dart';
 import 'package:flutter/material.dart';
 
 class DashboardSectionWidget extends StatelessWidget {
@@ -29,13 +30,15 @@ class DashboardSectionWidget extends StatelessWidget {
                     children: [
                       MyFielsSection(),
                       RecentFilesSection(),
+                      if (Responsive.isMobile(context)) StorageSection(),
                     ],
                   ),
                 ),
-                Expanded(
-                  flex: 2,
-                  child: StorageSection(),
-                ),
+                if (!Responsive.isMobile(context))
+                  Expanded(
+                    flex: 2,
+                    child: StorageSection(),
+                  ),
               ],
             )
           ],
